@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "nrfx_timer.h": "c",
+        "bas.h": "c",
+        "i2c.h": "c"
+    },
+    "nrf-connect.applications": [
+        "${workspaceFolder}"
+    ]
+}
