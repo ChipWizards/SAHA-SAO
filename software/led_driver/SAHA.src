@@ -1,0 +1,17 @@
+row1:	dw 0000000000011110b
+	dw 0000000000000010b
+	dw 0000000000010000b
+	dw 0000000000000100b
+	dw 0000000000001000b
+	dw 0000000000001100b
+row7:	dw 0000000000010010b
+.segment program1               ; Begin of a segment
+		mux_map_start row1
+		mux_ld_end row7
+loop1:          ramp 1.0, 190     ; Beginning of a loop, set PWM to cycle.; 127 ; 190
+                wait 0.48       ; Wait for 0.48 seconds.
+                ramp 1.0, -190     ; Set PWM to 0% ; -127 ; 190
+                wait 0.48       ; Wait for 0.48 seconds
+		mux_map_next
+                branch 0, loop1 ; Endless loop.
+                

@@ -1,0 +1,31 @@
+  1 00 001E    row1:	dw 0000000000011110b
+  2 01 0002    	dw 0000000000000010b
+  3 02 0010    	dw 0000000000010000b
+  4 03 0004    	dw 0000000000000100b
+  5 04 0008    	dw 0000000000001000b
+  6 05 000C    	dw 0000000000001100b
+  7 06 0012    row7:	dw 0000000000010010b
+  8 07         .segment program1               ; Begin of a segment
+  9 07 9C00    		mux_map_start row1
+ 10 08 9C86    		mux_ld_end row7
+ 11 09 16BE    loop1:          ramp 1.0, 190     ; Beginning of a loop, set PWM to cycle.; 127 ; 190
+ 12 0A 7E00                    wait 0.48       ; Wait for 0.48 seconds.
+ 13 0B 17BE                    ramp 1.0, -190     ; Set PWM to 0% ; -127 ; 190
+ 14 0C 7E00                    wait 0.48       ; Wait for 0.48 seconds
+ 15 0D 9D80    		mux_map_next
+ 16 0E A002                    branch 0, loop1 ; Endless loop.
+ 17                            
+
+================================
+Labels:
+loop1 = 09
+row1 = 00
+row7 = 06
+
+================================
+Segments:
+program1 = 07
+
+================================
+Free memory: 81
+Errors: 0
